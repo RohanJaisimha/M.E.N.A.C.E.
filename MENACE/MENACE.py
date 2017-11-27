@@ -138,7 +138,7 @@ def main():
       if(i not in boxes_used):
         fout.write(t_line+'\n')
       else:
-        if(i==0 and len(set(t_line.split()))==2):
+        if(i==0 and len(t_line.split())==2):
           fout.write(t_line+'\n')
         else:
           fout.write(t_line.replace(positions_played[boxes_used.index(i)],"")+'\n')
