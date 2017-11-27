@@ -48,7 +48,7 @@ def letComputerPlay():
       boxes_used.append(i) 
       break
   fin.close()
-  main_grid[possible_moves.index(positions_played[-1])]='1'   
+  main_grid[possible_moves.index(positions_played[len(positions_played)-1])]='1'   
   return 1
 
 def printGrid():
