@@ -73,7 +73,7 @@ def letPlayerPlay():
         print(" | ",end="")
     print("\nWhere do you want to play?")
     choice=input()
-    if(main_grid[possible_moves.index(choice)]!='0'):
+    if(choice not in possible_moves or main_grid[possible_moves.index(choice)]!='0'):
       print("That is an illegal move")
     else:
       break
@@ -138,7 +138,10 @@ def main():
       if(i not in boxes_used):
         fout.write(t_line+'\n')
       else:
-        fout.write(t_line.replace(positions_played[boxes_used.index(i)],"")+'\n')
+        if(i==0 and len(set(t_line.split()))==2):
+          fout.write(t_line+'\n')
+        else:
+          fout.write(t_line.replace(positions_played[boxes_used.index(i)],"")+'\n')
     fout.close()
     fin.close()
     os.remove("Combinations.txt")
