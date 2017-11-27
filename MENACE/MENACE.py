@@ -141,7 +141,7 @@ def main():
         if(i==0 and len(t_line.split())==2):
           fout.write(t_line+'\n')
         else:
-          fout.write(t_line.replace(positions_played[boxes_used.index(i)],"")+'\n')
+          fout.write(t_line.replace(positions_played[boxes_used.index(i)],"",1)+'\n')
     fout.close()
     fin.close()
     os.remove("Combinations.txt")

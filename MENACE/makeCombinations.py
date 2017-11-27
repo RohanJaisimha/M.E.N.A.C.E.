@@ -68,7 +68,7 @@ def addPossibleMoves():
     fout.write(t_line+' ')
     for j in range(9):
       if(t_line[j]=='0'):
-        fout.write(possible_moves[j]+' ')
+        fout.write((possible_moves[j]+' ')*2)
     fout.write('\n')
   fout.close()
   fin.close()
