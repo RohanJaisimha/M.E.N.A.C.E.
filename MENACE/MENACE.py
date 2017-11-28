@@ -1,5 +1,6 @@
 from random import *
 import os
+import matplotlib.pyplot as plt
 
 def pickWhereToPlay(box):
   return choice(box)
@@ -146,7 +147,37 @@ def main():
     fin.close()
     os.remove("Combinations.txt")
     os.rename("Temp.txt","Combinations.txt")    
+
+  #put into data file
+  fin=open("Data.txt",'r')
+  num_times_played=len(fin.readlines())-1
+  fin.close()
+  fout=open("Data.txt",'a')
+  fin1=open("Combinations.txt",'r')
+  num_in_first_box=fin1.readline().strip().split()
+  fin1.close()
+  fout.write(str(num_times_played+1)+"\t"+str(len(num_in_first_box)-1)+"\n")
+  fout.close()
   
+  #plot on graph
+  fin=open("Data.txt",'r')
+  x_values=[]
+  y_values=[]
+  flag=True
+  plt.xlabel("Number of games played")
+  plt.ylabel("Number of possible moves in first position")
+  for line in fin:
+    line=line.strip().split()
+    if(flag):
+      flag=False
+    else:
+      x_values.append(int(line[0]))
+      y_values.append(int(line[1]))
+  plt.plot(x_values,y_values)
+  plt.title('Data')
+  plt.legend()
+  plt.savefig('Data.pdf')
+
 main_grid=['0','0','0','0','0','0','0','0','0']
 boxes_used=[]
 positions_played=[]

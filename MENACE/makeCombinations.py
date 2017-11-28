@@ -75,15 +75,10 @@ def addPossibleMoves():
   os.remove("Combinations.txt")
   os.rename("Temp.txt","Combinations.txt")
 
-def createExcelFile():
-  fout=open("Data.xls",'w')
+def createDataFile():
+  fout=open("Data.txt",'w')
   fout.write("Number of games played\tNumber of moves possible for first move\n")
   fout.write("0\t144\n")
-  fout.close()
-
-def createNumPlayed():
-  fout=open("NumPlayed.txt",'w')
-  fout.write('0')
   fout.close()
 
 def makeCombinations():
@@ -106,6 +101,5 @@ def main():
   removeBadOnes()
   removeAllSolvedOnes()
   addPossibleMoves()
-  createExcelFile()
-  createNumPlayed()
+  createDataFile()
 main()
