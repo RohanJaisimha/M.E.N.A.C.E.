@@ -68,7 +68,7 @@ def addPossibleMoves():
     fout.write(t_line+' ')
     for j in range(9):
       if(t_line[j]=='0'):
-        fout.write((possible_moves[j]+' ')*(2**((t_line.count('0')//2))))
+        fout.write((possible_moves[j]+' ')*4)
     fout.write('\n')
   fout.close()
   fin.close()
@@ -78,7 +78,7 @@ def addPossibleMoves():
 def createDataFile():
   fout=open("Data.txt",'w')
   fout.write("Number of games played\tNumber of moves possible for first move\n")
-  fout.write("0\t144\n")
+  fout.write("0\t36\n")
   fout.close()
 
 def makeCombinations():
@@ -102,4 +102,5 @@ def main():
   removeAllSolvedOnes()
   addPossibleMoves()
   createDataFile()
+
 main()

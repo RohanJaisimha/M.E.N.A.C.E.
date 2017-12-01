@@ -42,7 +42,7 @@ def letComputerPlay():
   for i in range(2423):
     whereToPlay=fin.readline().strip().split()
     t_grid=list(whereToPlay.pop(0))
-    if(whereToPlay==[]):
+    if(len(whereToPlay)==0):
       return 0
     if(compareGrid(main_grid,t_grid)):
       positions_played.append(pickWhereToPlay(whereToPlay))    
@@ -174,8 +174,9 @@ def main():
       x_values.append(int(line[0]))
       y_values.append(int(line[1]))
   plt.plot(x_values,y_values)
+  plt.xlim(0)
+  plt.ylim(0)
   plt.title('Data')
-  plt.legend()
   plt.savefig('Data.pdf')
 
 main_grid=['0','0','0','0','0','0','0','0','0']
