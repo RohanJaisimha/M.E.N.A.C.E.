@@ -1,5 +1,7 @@
 import os
 
+#counts the number of times a character appears in a series of text
+#Eg. count("Hello World!",'o')=2
 def count(text,char):
   count=0
   for i in text:
@@ -7,18 +9,23 @@ def count(text,char):
       count+=1
   return count
 
+#checking for three of an 'x' or an 'o' in a row
 def checkRows(combination):
   for i in range(3):
     if(combination[3*i]==combination[3*i+1] and combination[3*i]==combination[3*i+2] and combination[3*i]!='0'):
       return True
   return False
 
+
+#checking for three of an 'x' or an 'o' in a column
 def checkCols(combination):
   for i in range(3):
     if(combination[i]==combination[i+3] and combination[i]==combination[i+6] and combination[i]!='0'):
       return True
   return False
 
+
+#checking for three of an 'x' or an 'o' in diagonals
 def checkDiags(combination):
   #Check Principal Diagonal
   if(combination[0]==combination[4] and combination[0]==combination[8] and combination[0]!='0'):
@@ -29,9 +36,11 @@ def checkDiags(combination):
     return True
   return False
 
+#returns whether a grid is solved
 def isSolved(combination):
   return checkRows(combination) or checkCols(combination) or checkDiags(combination)    
 
+#removes all combinations that are already solved
 def removeAllSolvedOnes():
   fin=open("Combinations.txt",'r')
   fout=open("Temp.txt",'w')
@@ -43,13 +52,13 @@ def removeAllSolvedOnes():
   fin.close()
   os.remove("Combinations.txt")
   os.rename("Temp.txt","Combinations.txt")
-  
+
+#removes all combinations where the number of 'x' is not equal to the number of 'o'
 def removeBadOnes():
   fin=open("Combinations.txt",'r')
   fout=open("Temp.txt",'w')
   for line in fin:
     t_line=line.strip()
-    count_0=count(t_line,'0')
     count_1=count(t_line,'1')
     count_2=count(t_line,'2')
     if(count_1==count_2):
