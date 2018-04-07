@@ -2,27 +2,34 @@ from random import *
 import os
 import matplotlib.pyplot as plt
 
+#randomly selects where to play
 def pickWhereToPlay(box):
   return choice(box)
 
+#compares to grids
 def compareGrid(grid1,grid2):
   for i in range(9):
     if(grid1[i]!=grid2[i]):
       return False
   return True
 
+
+#checking for three of an 'x' or an 'o' in rows
 def checkRows():
   for i in range(3):
     if(main_grid[3*i]==main_grid[3*i+1] and main_grid[3*i]==main_grid[3*i+2] and main_grid[3*i]!='0'):
       return True
   return False
 
+
+#checking for three of an 'x' or an 'o' in columns
 def checkCols():
   for i in range(3):
     if(main_grid[i]==main_grid[i+3] and main_grid[i]==main_grid[i+6] and main_grid[i]!='0'):
       return True
   return False
 
+#checking for three of an 'x' or an 'o' in diagonals
 def checkDiags():
   #Check Principal Diagonal
   if(main_grid[0]==main_grid[4] and main_grid[0]==main_grid[8] and main_grid[0]!='0'):
@@ -33,6 +40,7 @@ def checkDiags():
     return True
   return False
 
+#check if a grid is solved
 def isSolved():
   return checkRows() or checkCols() or checkDiags()    
 
